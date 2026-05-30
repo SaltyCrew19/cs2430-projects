@@ -143,7 +143,7 @@ Employers value developers who can work across paradigms and recognize patterns 
 
 ## Repository URL
 
-https://github.com/yourusername/cs2430-projects
+https://github.com/SaltyCrew19/cs2430-projects
 
 ---
 

@@ -1,0 +1,12 @@
+Notes.txt
+*.o
+*.exe
+*.out
+*.class
+*.jar
+bin/
+.DS_Store
+.vscode/
+bin/
+build/
+out/

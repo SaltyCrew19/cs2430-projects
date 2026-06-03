@@ -1,5 +1,11 @@
 #include <iostream>
+using namespace std;
+int main(int, char**)
+{
+    cout << "Hello, from SortingAlgorithms!\n";
 
-int main(int, char**){
-    std::cout << "Hello, from SortingAlgorithms!\n";
+
+
+    
+    return 0;
 }

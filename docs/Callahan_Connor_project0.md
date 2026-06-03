@@ -12,76 +12,37 @@
 
 ## 1 Object-Oriented Programming
 
-**Short Description:**
-Object-oriented programming organizes software around objects that bundle data and behavior together. The four pillars are encapsulation, abstraction, inheritance, and polymorphism. Programs are modeled as networks of collaborating objects rather than a single sequence of instructions.
+Object-oriented programming centers on building software from self-contained units called objects each combining its own data with the behaviors that act on it. Its four foundational principles are encapsulation, abstraction, inheritance and polymorphism. Rather than following one continuous sequence of instructions a program built this way is a collection of cooperating objects.
 
-**Good Fit:**
-OOP works well when a problem involves distinct entities that have their own state and behavior, especially when those entities share hierarchical relationships. Large applications with many interacting components benefit the most.
+OOP shines when a problem naturally maps to multiple real-world entities that each hold state and perform actions particularly when those entities form parent-child relationships. A college course registration system with Student, Course and Instructor classes is a good example because each entity manages its own data independently and a specialized type like GraduateStudent can build on Student through inheritance without duplicating any existing logic. Applications that grow large and involve many interacting parts benefit the most from this structure.
 
-*Concrete example:* A university registration system with Student, Course, and Instructor classes is a natural fit because each entity owns its own data and a specialized type like GraduateStudent can extend Student through inheritance without rewriting existing code.
+Where OOP falls short is small scripts or straightforward data-processing tasks. Building class hierarchies in those situations just adds complexity without any real organizational benefit.
 
-**Poor Fit:**
-OOP is not ideal for small scripts or simple data-transformation tasks where building class hierarchies adds complexity without any real organizational benefit.
-
-**Example Language:** Java
-
-**Why Java?**
-Java was built around classes and objects from the ground up. Every piece of executable code must live inside a class, which enforces the OOP model consistently. Features like interfaces, abstract classes, and access modifiers directly support all four pillars.
-
-**Resource:**
-Oracle. "The Java Tutorials: Object-Oriented Programming Concepts." https://docs.oracle.com/javase/tutorial/java/concepts/
-
-**Familiarity:** Used in previous courses.
+Java is the standard language for this paradigm since all executable code must live inside a class which enforces the OOP model at every level. Features like interfaces, abstract classes and access modifiers directly support all four core principles. A good starting point is the Oracle Java Tutorials at https://docs.oracle.com/javase/tutorial/java/concepts/ and I have used this paradigm in previous courses so I am fairly comfortable with it.
 
 ---
 
 ## 2 Procedural Programming
 
-**Short Description:**
-Procedural programming structures a program as a sequence of explicit instructions grouped into functions. Data and behavior are kept separate: variables hold data and functions operate on it. The developer controls execution flow directly from top to bottom.
+Procedural programming organizes a program as an ordered series of instructions grouped into reusable functions. Data and behavior remain separate where variables store information and functions process it and the programmer directly controls execution flow from start to finish.
 
-**Good Fit:**
-Procedural programming suits problems with a clear linear sequence of steps and no need for complex entity relationships. Automation scripts, command-line tools, and low-level systems work well in this style.
+This style works well for problems that follow a straightforward step-by-step sequence and do not require complex relationships between entities. A command-line calculator that accepts two numbers and an operator then calls the appropriate function for each operation is a good fit because the task is a simple linear workflow with no need for objects or class hierarchies. Automation scripts and low-level systems programming are other natural applications.
 
-*Concrete example:* A command-line calculator that reads two numbers and an operator, then calls the appropriate function for each operation, is a good fit because the task is a simple ordered workflow with no need for objects or inheritance.
+Where it breaks down is in large applications. As a codebase scales up any function can read or modify shared data which makes it increasingly hard to track down the source of bugs.
 
-**Poor Fit:**
-Procedural programming becomes hard to manage in large applications because any function can modify shared data, making bugs difficult to isolate as the codebase grows.
-
-**Example Language:** C++
-
-**Why C++?**
-C++ supports procedural programming without requiring code to be placed inside classes. Its close-to-hardware memory model and function-based design make it common in operating systems and embedded development where step-by-step control over resources is important.
-
-**Resource:**
-cplusplus.com. "C++ Language Tutorial." https://cplusplus.com/doc/tutorial/
-
-**Familiarity:** Used in previous courses.
+C++ is a strong fit for this paradigm because it allows code to be written outside of classes entirely. Its close relationship with hardware memory and its function-based design make it common in operating systems and embedded development where fine-grained control over resources matters. More information can be found at https://cplusplus.com/doc/tutorial/ and like OOP I have used this paradigm in previous courses.
 
 ---
 
 ## 3 Functional Programming
 
-**Short Description:**
-Functional programming treats computation as the evaluation of pure functions applied to immutable data. Functions can be passed as arguments and returned as values. The goal is to eliminate side effects and make programs more predictable.
+Functional programming treats computation as a series of pure function evaluations applied to data that never changes. Functions are first-class values that can be passed around and returned like any other data and the primary goal is to eliminate hidden side effects so program behavior is easier to reason about.
 
-**Good Fit:**
-Functional programming is well suited to data-transformation pipelines and concurrent systems. Because pure functions share no state, they are safe to run in parallel without data-race bugs.
+This paradigm works really well for data-transformation pipelines and concurrent systems. Because pure functions dont share any mutable state they can safely run in parallel without risking data-race conditions. A data analysis tool that filters a dataset and computes aggregate statistics is a good example, each processing step is a clean transformation with no shared state to worry about which makes every step easy to test on its own.
 
-*Concrete example:* A data analysis program that filters records and aggregates values is a strong fit because each step is a pure transformation and each step can be verified independently without worrying about shared state being modified.
+Where it falls short is anything that involves heavily stateful interfaces. Something like a GUI application where controls need to continuously track and respond to user input doesnt map naturally to this style at all.
 
-**Poor Fit:**
-Functional programming is less natural for programs that manage heavily stateful interfaces, such as a GUI application where controls must track and update user input continuously.
-
-**Example Language:** Haskell
-
-**Why Haskell?**
-Haskell enforces purity at the language level so accidental mutation of shared state is impossible. Its strong static type system and algebraic data types make illegal program states unrepresentable. Haskell is the standard reference language for learning what purely functional programming looks and feels like.
-
-**Resource:**
-Lipovaca, M. "Learn You a Haskell for Great Good!" https://learnyouahaskell.com/
-
-**Familiarity:** Only read about it; no hands-on experience yet.
+Haskell is the standard language associated with this paradigm. It enforces functional purity at the language level so accidental mutation of shared state is basically impossible and its strong static type system lets you rule out illegal program states at compile time. A good starting resource is Lipovaca's "Learn You a Haskell for Great Good!" at https://learnyouahaskell.com/ and my current familiarity with this paradigm is pretty limited, I have only read about it and have no hands-on experience yet.
 
 ---
 
@@ -89,53 +50,45 @@ Lipovaca, M. "Learn You a Haskell for Great Good!" https://learnyouahaskell.com/
 
 ## 1 Distinguishing the Three Levels
 
-A programming paradigm is a philosophy of programming that shapes how a developer thinks about and structures code at the language level. It determines what constructs are available and how the developer reasons about computation throughout an entire program.
+A programming paradigm is a fundamental philosophy of computation that shapes how a developer thinks about and structures an entire program at the language level. It determines which constructs are available and guides how the developer reasons about problems throughout the whole codebase.
 
-An architectural pattern is a high-level blueprint for how major components of a system are divided, how they communicate, and how responsibilities are distributed. Architectural decisions affect deployment, scalability, and team structure and exist before any specific code is written.
+An architectural pattern is a high-level blueprint for dividing a system into major components defining how they communicate and distributing responsibilities among them. These decisions influence deployment, scalability and team organization and they are made before a single line of code is written.
 
-A design pattern is a reusable solution to a specific recurring design problem within a codebase. It is smaller in scope than an architectural pattern and describes how a small number of classes or functions should interact to solve one well-defined problem. The classic reference is Gamma et al., 1994, which catalogued 23 patterns across creational, structural, and behavioral categories.
+A design pattern is a proven reusable solution to a specific recurring problem that appears within a codebase. It operates at a smaller scope than an architectural pattern and describes how a handful of classes or functions should interact to address one well-defined challenge. The foundational reference is Gamma et al. 1994 which catalogued 23 patterns grouped into creational, structural and behavioral categories.
 
-In short: a paradigm shapes the style you think in, an architectural pattern shapes how you divide a whole system, and a design pattern shapes how you solve a specific recurring problem inside that system.
+Put simply a paradigm governs the style you think in, an architectural pattern governs how an entire system is divided and a design pattern governs how a specific recurring problem is solved inside that system.
 
 ---
 
 ## 2 Architectural Patterns
 
-**Client-Server**
-The system is divided into clients that request services and servers that provide them, with communication over a defined network protocol. This pattern solves the problem of making shared data consistently available to many users without requiring each user to maintain their own copy. Web browsers and web servers are the most familiar example, and the same structure appears in email clients and multiplayer games.
+The client-server pattern splits a system into clients that make requests and servers that fulfill them communicating through a defined network protocol. This solves the problem of making shared data reliably available to many users without requiring each user to maintain their own local copy. The most familiar example is the web browser and web server relationship though the same structure also underlies email clients and multiplayer games.
 
-**Layered Architecture**
-The system is organized into horizontal layers such as presentation, business logic, and data access, where each layer communicates only with the layer directly above or below it. This pattern manages complexity in large systems by ensuring that a change in one layer does not affect unrelated layers. Most enterprise web applications follow a three-tier structure with a frontend, a business logic API, and a relational database.
+Layered architecture organizes a system into horizontal tiers commonly presentation, business logic and data access where each tier only communicates with the one immediately above or below it. This manages complexity in large systems by isolating changes so that a modification in one layer does not ripple into unrelated layers. The majority of enterprise web applications follow a three-tier arrangement consisting of a frontend, a business logic API and a relational database.
 
-**Microservices**
-The application is broken into small independent services, each owning its own data and exposing a well-defined API, communicating over lightweight protocols. This pattern solves scaling and deployment bottlenecks because a single high-traffic service can be scaled independently without redeploying the whole system. Netflix and Amazon are commonly cited examples.
+Microservices breaks an application into small independently deployable services each owning its own data and exposing a well-defined API with services communicating over lightweight protocols. This solves scaling and deployment bottlenecks by allowing a single high-demand service to be scaled on its own without redeploying the entire application. Netflix and Amazon are frequently cited examples of this approach.
 
-**Resource:**
-Richards, M. and Ford, N. "Fundamentals of Software Architecture." O'Reilly Media, 2020. https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/
+A solid resource covering all three of these patterns is Richards and Ford's "Fundamentals of Software Architecture" from O'Reilly Media at https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/
 
 ---
 
 ## 3 Design Patterns
 
-**Observer**
-*Problem:* Multiple objects need to react when another object changes state, but the subject should not need to know who is watching. *Pattern:* The subject maintains a list of observers and notifies all of them through a common interface when its state changes. *Benefit:* Observers can be added or removed at runtime without modifying the subject. A weather dashboard where multiple display widgets update automatically when new sensor data arrives is a common example.
+The observer pattern addresses the problem of multiple objects needing to react when another object changes state without the subject needing to know who is watching. The subject keeps a list of observers and notifies all of them through a shared interface whenever its state updates which means observers can be added or removed at runtime without touching the subject at all. A weather dashboard where multiple display panels refresh automatically when new sensor readings arrive is a common illustration of this.
 
-**Factory Method**
-*Problem:* A class needs to create objects without hard-coding which concrete type to instantiate. *Pattern:* A creation interface is defined but subclasses or configuration decide which concrete class is actually produced. *Benefit:* The calling code is decoupled from concrete types and new product types can be added without changing existing code. A cross-platform GUI toolkit that returns the correct button type per operating system is a typical example.
+The factory method pattern addresses the problem of a class needing to produce objects without being tied to a specific concrete type at compile time. A creation interface is defined but subclasses or configuration determine which concrete class is actually instantiated which means new product types can be introduced without modifying existing code. A cross-platform UI toolkit that returns the appropriate button type for each operating system is a typical example.
 
-**Singleton**
-*Problem:* A system needs exactly one instance of a class, such as a logger or configuration manager, accessible throughout the application. *Pattern:* The class keeps a private static reference to its sole instance and exposes it through a static accessor while keeping its constructor private. *Benefit:* One shared instance is guaranteed, preventing the conflicts that multiple independent instances would cause. An application-wide logging service is the standard example.
+The singleton pattern addresses the problem of a system needing exactly one instance of a class such as a logger or configuration manager that is accessible from anywhere in the application. The class holds a private static reference to its sole instance and exposes it through a static accessor while keeping its constructor private to prevent additional instantiation. An application-wide logging service is the standard illustration of this pattern.
 
-**Resource:**
-Gamma, E., Helm, R., Johnson, R., and Vlissides, J. "Design Patterns: Elements of Reusable Object-Oriented Software." Addison-Wesley, 1994. Summary guide at https://refactoring.guru/design-patterns
+A good reference for all three of these is the summary guide at https://refactoring.guru/design-patterns which is based on Gamma, Helm, Johnson and Vlissides "Design Patterns: Elements of Reusable Object-Oriented Software" from Addison-Wesley 1994.
 
 ---
 
 # Learning Plan and Reflection
 
-Most of my programming experience has been in object-oriented and procedural styles because those are the paradigms covered in introductory courses. Functional programming is genuinely new to me and is my main learning goal this semester. My plan is to work through "Learn You a Haskell for Great Good!" during the gaps between projects, typing and running every example in GHCi rather than just reading. Once I have the basics down I want to rewrite a small Python utility I already have as an equivalent Haskell program using map, filter, and foldr. Having a working Python version as a reference makes correctness easy to verify, and the comparison will make the paradigm differences concrete rather than theoretical.
+Most of my programming experience has been in object-oriented and procedural styles because those are the paradigms covered in introductory courses. Functional programming was new to me going into this assignment and researching it was genuinely interesting but my actual focus this semester is getting better at looking at a problem and building a real plan before touching any code. It does not matter much what language that ends up being in, what I want to improve is understanding the logic and structure behind each step well enough that the implementation almost follows naturally.
 
-Employers value developers who can work across paradigms and recognize patterns because different problems require different solutions. A developer who recognizes a design pattern in an unfamiliar codebase understands it far faster than someone who has to reverse-engineer the intent. Paradigm fluency also means choosing the right tool for each task rather than forcing every solution into the same mold. Architectural pattern awareness contributes at a higher level still, since developers who can reason about system structure rather than just writing individual functions are more useful during design reviews and more prepared for the complexity of professional codebases.
+The reason that matters to employers is not just that you know more languages or patterns its that you can walk into an unfamiliar codebase or problem and not freeze up. Being able to break something down systematically and recognize structure you have seen before means you spend less time confused and more time actually building things. That is the skill I want to be developing this semester.
 
 ---
 
@@ -165,37 +118,13 @@ cs2430-projects/
 ├── src/
 └── docs/
 
-Each project folder is self-contained with its own source and docs subfolder so reviewing or submitting any single project does not require navigating the whole repository. The root README describes the course, the semester, and the purpose of each folder, and notes that Project 0 is a setup assignment and that Projects 1 through 4 will be added as the semester progresses. The .gitignore excludes compiled binaries, IDE configuration folders, and OS-generated files.
+Each project folder is self-contained with dedicated source and docs subfolders so reviewing or submitting any individual project does not require navigating the whole repository. The root README describes the course, the semester and the purpose of each folder and notes that Project 0 is a setup assignment while Projects 1 through 4 get added as the semester goes on. The .gitignore excludes compiled binaries, IDE configuration folders and operating system-generated files.
 
----
+For quality I tend to write new code in shorter focused sessions and save the longer blocks for debugging. When something breaks I reach for the debugger first and fall back to print statements when I cant. A habit I want to break is forgetting what I already did and having to debug my way back to it so I will commit to Git at the end of every session with a message that actually explains what changed and why so I always have a trail to follow.
 
-## Solo Workflow Plan
+For maintainability every function will have a comment covering its purpose, parameters and return value. Right now my version of planning is usually just dropping todo comments into the code as I go which works but means I am figuring things out mid-implementation rather than before. For each of Projects 1 through 4 I want to write an actual design note covering the algorithm, data structures and edge cases before writing any real code. It does not need to be formal but it needs to exist before I start.
 
-**Quality:**
-I will test programs incrementally by writing and validating small sections before adding more. For each function I will test at least three cases: a typical input, an edge case, and an invalid input. When bugs appear I will read the full stack trace rather than guessing at the cause.
-
-**Risk Reduction:**
-I will commit to Git at the end of every work session with a short message describing what changed and why. I will start each project early enough to leave at least one full work block for unexpected problems before the deadline.
-
-**Maintainability:**
-Every function will have a comment stating its purpose, parameters, and return value. Each project's docs folder will contain a short design note written before coding begins. The root README will be updated after each project is submitted.
-
----
-
-## Personal Plan
-
-**Strength:** I am comfortable reading and tracing existing code quickly, which helps me understand unfamiliar APIs and locate bugs efficiently.
-
-**Growth area:** I want to improve my habit of writing design notes before coding rather than after, to reduce rework and clarify my thinking earlier.
-
-**Concrete action:** For each of Projects 1 through 4 I will write and commit a short design note covering the algorithm, data structures, and edge cases before writing any Final code.
-
-**Available work blocks:**
-- Tuesday 6:00 PM to 8:00 PM 
-- Thursday 7:00 PM to 9:00 PM
-- Saturday 10:00 AM to 12:00 PM
-
-**Constraint:** Works weekdays until 6:00 PM.
+My available work blocks are Tuesday 6:00 PM to 8:00 PM, Thursday 7:00 PM to 9:00 PM and Saturday 10:00 AM to 12:00 PM. I work weekdays until 6:00 so those are the slots I have.
 
 ---
 

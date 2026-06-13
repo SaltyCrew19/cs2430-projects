@@ -5,12 +5,21 @@
 static void quickSortHelper(int arr[], int low, int high, int& comparisons);
 static void mergeSortHelper(int arr[], int size, int& comparisons);
 static void merge(int arr[], int left[], int leftSize, int right[], int rightSize, int& comparisons);
+static void heapify(int arr[], int size, int index, int&comparisons);
+/**
+ * @brief swaps 2 elements in an array
+ * 
+ * @param arr the array for elemets to be swapped in
+ * @param a index 1
+ * @param b index 2
+ */
 static void swapElements(int arr[], int a, int b);
 
-void mergeSort(int arr[], int n)
+int mergeSort(int arr[], int n)
 {
     int comparisons = 0;
     mergeSortHelper(arr, n, comparisons);
+    return comparisons;
 }
 
 static void mergeSortHelper(int arr[], int size, int& comparisons)
@@ -54,10 +63,11 @@ void merge(int arr[], int left[], int leftSize, int right[], int rightSize, int&
 }
 
 
-void quickSort(int arr[], int n)
+int quickSort(int arr[], int n)
 {
     int comparisons = 0;
     quickSortHelper(arr, 0, n-1, comparisons);
+    return comparisons;
 }
 
 static void quickSortHelper(int arr[], int low, int high, int& comparisons)
@@ -76,19 +86,68 @@ static void quickSortHelper(int arr[], int low, int high, int& comparisons)
     quickSortHelper(arr, low, pivotPos - 1, comparisons);
     quickSortHelper(arr, pivotPos + 1, high, comparisons);
 }
+
+
+int heapSort(int arr[], int n)
+{
+    int comparisons = 0;
+    int mid = n/2;
+    for (int i = mid; i >= 0; i--) {heapify(arr, n, i, comparisons);}
+
+    for (int i = n-1; i > 0; i--)
+    {
+        swapElements(arr, 0, i);
+        heapify(arr, i, 0, comparisons);
+    }
+    return comparisons;
+}
+void heapify(int arr[], int size, int index, int&comparisons)
+{
+    int largest = index;
+    int left = 2*index + 1;
+    int right = 2*index + 2;
+
+    if (left < size && arr[left] > arr[largest]) {largest = left; comparisons++;}
+    if (right < size && arr[right] > arr[largest]) {largest = right; comparisons++;}
+
+    if (largest != index)
+    {
+        swapElements(arr, index, largest);
+        heapify(arr, size, largest, comparisons);
+    }
+}
+
+int shakerSort(int arr[], int n)
+{
+    int comparisons = 0;
+    int left = 0;
+    int right = n-1;
+
+    while (left < right)
+    {
+        for (int i = left; i < right; i++)
+        {
+            comparisons++;
+            if(arr[i] > arr[i+1]){swapElements(arr, i, i+1);}
+        }
+        right--;
+
+        for (int i = right; i > left; i--)
+        {
+            comparisons++;
+            if (arr[i] < arr[i-1]){swapElements(arr, i, i-1);}
+        }
+        left++;
+    }
+    return comparisons;
+}
+
+
+
+
 void swapElements(int arr[], int a, int b)
 {
     int temp = arr[a];
     arr[a] = arr[b];
     arr[b] = temp;
-}
-
-void heapSort(int arr[], int n)
-{
-//TODO: do the next 2 sorting algs
-}
-
-void shakerSort(int arr[], int n)
-{
-    
 }

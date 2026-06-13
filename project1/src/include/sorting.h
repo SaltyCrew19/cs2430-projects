@@ -1,5 +1,5 @@
     //sorting.h
-    void mergeSort(int arr[], int n);
-    void quickSort(int arr[], int n);
-    void heapSort(int arr[], int n);
-    void shakerSort(int arr[], int n);
+    int mergeSort(int arr[], int n);
+    int quickSort(int arr[], int n);
+    int heapSort(int arr[], int n);
+    int shakerSort(int arr[], int n);

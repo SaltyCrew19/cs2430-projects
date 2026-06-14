@@ -5,39 +5,33 @@
 
 ---
 
-## Introduction
-Sorting algorithms all solve the same problem but take very different approaches to get there. Some split the data recursively some use heap structures and some just scan back and forth making swaps. Those differences matter because they directly affect how much work the algorithm does especially on larger inputs. This project implements four sorting algorithms in C++ counts comparisons and looks at how they stack up against each other.
+There Are 4 algorisms and they mostly all do the same things the real problem is how efficient they are when you have mass amounts of data.
 
 ---
 
-## Implementation and Methods
+**Array Generator**
+create an array of random numbers
 
-### Array Generator
-Generates a random integer array using C++s `random_device` as a seed `mt19937` as the engine and `uniform_int_distribution` to keep values between 1 and 100. A new array is generated for each trial.
+**Merge Sort**
+Splits the array until it only has one piece then reassembles in sorted order.
 
-### Merge Sort
-Recursively splits the array in half until each piece is one element then merges back in sorted order by comparing the front of each half. Comparisons are counted in the merge step.
+**Quick Sort**
+Gets a high low and pivot compares then moves in once the low is greater than the high it can sort that element then passes a smaller array down.
 
-### Quick Sort
-Picks the last element as a pivot and partitions the array so smaller elements go left and larger go right. Recurses on both sides. Comparisons are counted each time an element is checked against the pivot.
+**Heap Sort**
+Builds a max heap putting the largest at the root then pulls it off swaps it to the back and fixes the structure. Does this until sorted.
 
-### Heap Sort
-Phase one builds a max heap so the largest element sits at index 0. Phase two repeatedly swaps the root with the last unsorted element shrinks the heap and restores the heap property. Comparisons are counted when a parent is checked against its children.
+**Shaker Sort**
+Bubble sort but goes both directions. Forward pass moves the biggest to the right backward pass moves the smallest to the left.
 
-### Shaker Sort
-Bubble sort going both directions. Left to right pushes the largest element to the right boundary right to left pushes the smallest to the left boundary. Boundaries shrink each pass. Comparisons counted on every adjacent pair check.
-
-### Comparison Counting
-Every algorithm increments the same counter whenever two array elements are directly compared. Keeping this rule consistent across all four algorithms is what makes the counts actually comparable to each other.
+**Comparison Counting**
+Every time two values are directly compared the counter goes up.
 
 ---
 
-## Verification
-Each algorithm was tested by printing the unsorted and sorted arrays side by side across multiple runs. All four consistently produced ascending order output. Size 1 arrays were also tested as an edge case and all algorithms handled them correctly without performing any operations.
+All four algorithms were checked by printing the before and after arrays on several separate runs. Every one of them produced correct ascending output every time. Single element arrays were also tested and none of the algorithms broke or did any unnecessary work on them.
 
 ---
-
-## Results
 
 10 trials per size arrays randomly generated each run.
 
@@ -52,7 +46,6 @@ PROCESS          MIN    MAX     AVG
 Merge:           8      11      9.50
 Quick:           8      14      10.40
 Heap:            5      9       7.30
-
 Shaker:          15     15      15.00
 10 Runs size = 8
 PROCESS          MIN    MAX     AVG
@@ -63,42 +56,37 @@ Shaker:          28     28      28.00
 
 ---
 
-## Discussion and Analysis
-
 **Easiest to implement?**
-Shaker sort. Having seen bubble sort before made the two direction extension straightforward. No recursion no complex structures just two loops and shrinking boundaries.
+Shaker sort. Already knew bubble sort so the two direction version was pretty easy.
 
 **Hardest to implement?**
-Merge sort. Least prior exposure and the recursive splitting plus merging logic had the most room for error. One wrong step and the whole output is wrong which makes it annoying to debug.
+Merge sort. Least familiar with this one had a harder time and had to debug 
 
 **How were comparisons counted and why does it matter?**
-A counter increments every time two elements are directly compared applied the same way in all four algorithms. If each algorithm counted differently the numbers would not mean anything when put next to each other.
+the counter goes up every time there is a comparison
 
 **Which was most efficient?**
-Heap sort and merge sort were closest to each other and both pulled ahead of shaker sort as n grew. This matched expectations since shaker sort is O(n²) while the others are O(n log n).
+Heap and merge sort because they are (n log n) and shaker is O(n²)  
 
-**Why dont small sizes perfectly match Big-O?**
-Big-O describes scaling behavior at large n. At n = 4 6 or 8 the constant factors in each implementation have more influence on the count than the asymptotic complexity does. The patterns become clearer at much larger sizes.
+**Why don't small sizes perfectly match Big-O?**
+because when you have such small numbers there is not much impact no matter what you use
 
 **What would stronger evidence look like?**
-Much larger input sizes and more trials. Worst case testing would also require constructed inputs rather than random ones for example quick sort hits O(n²) on already sorted arrays which random data rarely produces.
+when you use bigger arrays or do it a bunch of times
 
 **What implementation choices affect performance?**
-Pivot selection in quick sort memory allocation in merge sort and whether an algorithm can exit early all affect counts. Shaker sort has no early exit so it always produces the same count while quick sort varies a lot based on how the pivot splits the data.
+most sorting algorithm depend on how the array is when it is sent for quick sort if it is already sorted it turns into O(n²)
 
 ---
 
-## Conclusion
-All four algorithms sorted correctly but required different amounts of work to get there. The O(n log n) algorithms stayed close to each other while shaker sort fell behind noticeably at n = 8. Writing these from scratch made the tradeoffs between them much more concrete than reading about them would have.
+All four sorted correctly but took different amounts of work. The O(n log n) ones stayed close while shaker sort fell behind at n = 8. Implementing them made the differences a lot more concrete than just reading about them.
 
 ---
 
-## Summary and Lessons Learned
-The biggest takeaway was that you need to fully understand an algorithm before you try to implement it. Any wrong step produces incorrect output and tracing the bug back through recursive calls is tedious. Next time i would work through a few examples by hand before writing any code.
+The main takeaway is you need to understand an algorithm before you try to code it. Wrong steps produce bad output and tracing it back through recursive calls is tedious. Next time id walk through an example by hand first.
 
 ---
 
-## Sources
 - Course materials and previous projects
 - YouTube videos on merge sort quick sort heap sort and shaker sort
 - cppreference.com for C++ standard library documentation

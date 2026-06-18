@@ -49,19 +49,19 @@ std::string buildTable(int numOfTimes, int sizeOfArr)
         {
             case 0:
                 sort = "Merge";
-                for (int j = 0; j < numOfTimes; j++){comparisons[j] = mergeSort(generateArr(sizeOfArr),sizeOfArr);}
+                for (int j = 0; j < numOfTimes; j++){int* arr = generateArr(sizeOfArr); comparisons[j] = mergeSort(arr,sizeOfArr); delete[] arr;}
                 break;
             case 1:
                 sort = "Quick";
-                for (int j = 0; j < numOfTimes; j++){comparisons[j] = quickSort(generateArr(sizeOfArr),sizeOfArr);}
+                for (int j = 0; j < numOfTimes; j++){int* arr = generateArr(sizeOfArr); comparisons[j] = quickSort(arr,sizeOfArr); delete[] arr;}
                 break;
             case 2:
                 sort = "Heap";
-                for (int j = 0; j < numOfTimes; j++){comparisons[j] = heapSort(generateArr(sizeOfArr),sizeOfArr);}
+                for (int j = 0; j < numOfTimes; j++){int* arr = generateArr(sizeOfArr); comparisons[j] = heapSort(arr,sizeOfArr); delete[] arr;}
                 break;
             case 3:
                 sort = "Shaker";
-                for (int j = 0; j < numOfTimes; j++){comparisons[j] = shakerSort(generateArr(sizeOfArr),sizeOfArr);}
+                for (int j = 0; j < numOfTimes; j++){int* arr = generateArr(sizeOfArr); comparisons[j] = shakerSort(arr,sizeOfArr); delete[] arr;}
                 break;
             default:
                 sort = "NA";

@@ -22,13 +22,17 @@ namespace Multisets
     //Subtract
     int* Difference(int* setA, int* setB, int size)
     {
-        return new int[0];
+        int* result = new int[size];
+        for (int i = 0; i < size; i++){result[i] = std::max( 0 , setA[i] - setB[i]);}
+        return result;
     }
 
     //add
     int* Sum(int* setA, int* setB, int size)
     {
-        return new int[0];
+        int* result = new int[size];
+        for (int i = 0; i < size; i++){result[i] = setA[i] + setB[i];}
+        return result;
     }
 
 }

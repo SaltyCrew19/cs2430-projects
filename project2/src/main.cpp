@@ -191,6 +191,7 @@ int main(int, char**)
     delete[] multiResult;
 
     sys->print(sets);
+    delete sys;
     return 0;
 }
 

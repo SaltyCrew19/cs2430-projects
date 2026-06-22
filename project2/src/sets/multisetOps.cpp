@@ -1,26 +1,30 @@
 //multisetOps.cpp
+#include "multisetOps.h"
 
-
-//MAX
-int* Union(bool* setA, bool* setB, int size)
+namespace Multisets
 {
-    
-}
+    //MAX
+    int* Union(int* setA, int* setB, int size)
+    {
+        return setA;
+    }
 
-//NIN
-int* Intersection(bool* setA, bool* setB, int size)
-{
-    
-}
+    //NIN
+    int* Intersection(int* setA, int* setB, int size)
+    {
+        return setA;
+    }
 
-//Subtract
-int* Difference(bool* setA, bool* setB, int size)
-{
-    
-}
+    //Subtract
+    int* Difference(int* setA, int* setB, int size)
+    {
+        return setA;
+    }
 
-//add
-int* Sum(bool* setA, bool* setB, int size)
-{
-    
+    //add
+    int* Sum(int* setA, int* setB, int size)
+    {
+        return setA;
+    }
+
 }

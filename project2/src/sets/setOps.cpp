@@ -1,33 +1,35 @@
 //sets.cpp
 #include "setOps.h"
 #include <string>
-
-//not
-bool* ComplementNOT(bool* set, int size)
+namespace Sets
 {
+    //not
+    bool* ComplementNOT(bool* set, int size)
+    {
+        return set;
+    }
 
-}
+    //or
+    bool* Union(bool* setA, bool* setB, int size)
+    {
+        return setA;
+    }
 
-//or
-bool* Union(bool* setA, bool* setB, int size)
-{
+    //and
+    bool* Intersection(bool* setA, bool* setB, int size)
+    {
+        return setA;
+    }
 
-}
+    //and not
+    bool* Difference(bool* setA, bool* setB, int size)
+    {
+        return setA;
+    }
 
-//and
-bool* Intersection(bool* setA, bool* setB, int size)
-{
-
-}
-
-//and not
-bool* Difference(bool* setA, bool* setB, int size)
-{
-
-}
-
-//xor
-bool* SymmetricDifference(bool* setA, bool* setB, int size)
-{
-
+    //xor
+    bool* SymmetricDifference(bool* setA, bool* setB, int size)
+    {
+        return setA;
+    }
 }

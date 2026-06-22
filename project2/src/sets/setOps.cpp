@@ -22,7 +22,9 @@ namespace Sets
     //and
     bool* Intersection(bool* setA, bool* setB, int size)
     {
-        return setA;
+        bool* result = new bool[size];
+        for (int i = 0; i < size; i++){result[i] = (setA[i] && setB[i]);}
+        return result;
     }
 
     //and not

@@ -1,4 +1,11 @@
 //multisetOps.cpp
+/*
+    Name:       Connor
+    Course:     CS 2430, Section 501
+    Project:    Programming Project 2 - Sets and Multisets
+    File:       multisetOps.h
+    Purpose:    Declares multiset operations using integer arrays
+*/
 #include "multisetOps.h"
 #include <algorithm>
 namespace Multisets

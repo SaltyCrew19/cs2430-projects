@@ -1,4 +1,11 @@
 //sets.cpp
+/*
+    Name:       Connor
+    Course:     CS 2430, Section 501
+    Project:    Programming Project 2 - Sets and Multisets
+    File:       setOps.cpp
+    Purpose:    Implements ordinary set operations (NOT, Union, Intersection, Difference, SymmetricDifference)
+*/
 #include "setOps.h"
 #include <string>
 namespace Sets

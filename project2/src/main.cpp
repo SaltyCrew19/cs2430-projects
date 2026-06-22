@@ -1,3 +1,10 @@
+/*
+    Name:       Connor
+    Course:     CS 2430, Section 501
+    Project:    Programming Project 2 - Sets and Multisets
+    File:       main.cpp
+    Purpose:    Defines test data and runs set/multiset operations
+*/
 #include <iostream>
 #include "consoleOutput.h"
 #include "setOps.h"
@@ -27,11 +34,7 @@ int setSize = 10;
 int main(int, char**)
 {
     ConsoleOutput* sys = new ConsoleOutput("SetsAndMultisets");
-    sys->intro();
-
-
-    
-
+    sys->intro();    
 
     bool setA[10] = {1, 0, 1, 0, 1, 0, 0, 0, 1, 1};// Store A carries apples, mangos, grapes, kiwis, lemons
     bool setB[10] = {0, 1, 1, 1, 0, 1, 0, 1, 0, 0};// Store B carries bananas, mangos, oranges, peaches, pears

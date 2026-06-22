@@ -43,54 +43,152 @@ int main(int, char**)
     int multisetC[10] = {1, 4, 0, 0, 0, 0, 3, 2, 0, 5};// Stock counts for Store C
     std::string sets;
     
+    // --- Set Operations ---
     sets.append("\nSet Operations\n");
     sets.append("Store A\t\t" + boolSetToElements(setSize, setA) + "\nBit String:\t" + boolSetsTostring(setSize, setA) + "\n\n");
     sets.append("Store B\t\t" + boolSetToElements(setSize, setB) + "\nBit String:\t" + boolSetsTostring(setSize, setB) + "\n\n");
     sets.append("Store C\t\t" + boolSetToElements(setSize, setC) + "\nBit String:\t" + boolSetsTostring(setSize, setC) + "\n\n");
 
+    bool* boolResult = nullptr;
+
+    // -- Test Case 1: Store A and Store B --
     sets.append("-- Test Case 1: Store A and Store B --\n");
-    sets.append("NOT(A):\t\t" + boolSetsTostring(setSize, Sets::ComplementNOT(setA, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::ComplementNOT(setA, setSize)) + "\n");
-    sets.append("A u B:\t\t" + boolSetsTostring(setSize, Sets::Union(setA, setB, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Union(setA, setB, setSize)) + "\n");
-    sets.append("A n B:\t\t" + boolSetsTostring(setSize, Sets::Intersection(setA, setB, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Intersection(setA, setB, setSize)) + "\n");
-    sets.append("A - B:\t\t" + boolSetsTostring(setSize, Sets::Difference(setA, setB, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Difference(setA, setB, setSize)) + "\n");
-    sets.append("A (+) B:\t" + boolSetsTostring(setSize, Sets::SymmetricDifference(setA, setB, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::SymmetricDifference(setA, setB, setSize)) + "\n\n");
 
+    boolResult = Sets::ComplementNOT(setA, setSize);
+    sets.append("NOT(A):\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Union(setA, setB, setSize);
+    sets.append("A u B:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Intersection(setA, setB, setSize);
+    sets.append("A n B:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Difference(setA, setB, setSize);
+    sets.append("A - B:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::SymmetricDifference(setA, setB, setSize);
+    sets.append("A (+) B:\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n\n");
+    delete[] boolResult;
+
+
+    // -- Test Case 2: Store A and Store C --
     sets.append("-- Test Case 2: Store A and Store C --\n");
-    sets.append("NOT(A):\t\t" + boolSetsTostring(setSize, Sets::ComplementNOT(setA, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::ComplementNOT(setA, setSize)) + "\n");
-    sets.append("A u C:\t\t" + boolSetsTostring(setSize, Sets::Union(setA, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Union(setA, setC, setSize)) + "\n");
-    sets.append("A n C:\t\t" + boolSetsTostring(setSize, Sets::Intersection(setA, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Intersection(setA, setC, setSize)) + "\n");
-    sets.append("A - C:\t\t" + boolSetsTostring(setSize, Sets::Difference(setA, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Difference(setA, setC, setSize)) + "\n");
-    sets.append("A (+) C:\t" + boolSetsTostring(setSize, Sets::SymmetricDifference(setA, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::SymmetricDifference(setA, setC, setSize)) + "\n\n");
 
+    boolResult = Sets::ComplementNOT(setA, setSize);
+    sets.append("NOT(A):\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Union(setA, setC, setSize);
+    sets.append("A u C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Intersection(setA, setC, setSize);
+    sets.append("A n C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Difference(setA, setC, setSize);
+    sets.append("A - C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::SymmetricDifference(setA, setC, setSize);
+    sets.append("A (+) C:\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n\n");
+    delete[] boolResult;
+
+
+    // -- Test Case 3 (Edge): Store B and Store C --
     sets.append("-- Test Case 3 (Edge): Store B and Store C --\n");
-    sets.append("NOT(B):\t\t" + boolSetsTostring(setSize, Sets::ComplementNOT(setB, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::ComplementNOT(setB, setSize)) + "\n");
-    sets.append("B u C:\t\t" + boolSetsTostring(setSize, Sets::Union(setB, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Union(setB, setC, setSize)) + "\n");
-    sets.append("B n C:\t\t" + boolSetsTostring(setSize, Sets::Intersection(setB, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Intersection(setB, setC, setSize)) + "\n");
-    sets.append("B - C:\t\t" + boolSetsTostring(setSize, Sets::Difference(setB, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::Difference(setB, setC, setSize)) + "\n");
-    sets.append("B (+) C:\t" + boolSetsTostring(setSize, Sets::SymmetricDifference(setB, setC, setSize)) + "  ->  " + boolSetToElements(setSize, Sets::SymmetricDifference(setB, setC, setSize)) + "\n\n");
 
+    boolResult = Sets::ComplementNOT(setB, setSize);
+    sets.append("NOT(B):\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Union(setB, setC, setSize);
+    sets.append("B u C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Intersection(setB, setC, setSize);
+    sets.append("B n C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::Difference(setB, setC, setSize);
+    sets.append("B - C:\t\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n");
+    delete[] boolResult;
+
+    boolResult = Sets::SymmetricDifference(setB, setC, setSize);
+    sets.append("B (+) C:\t" + boolSetsTostring(setSize, boolResult) + "  ->  " + boolSetToElements(setSize, boolResult) + "\n\n");
+    delete[] boolResult;
+
+
+    // --- Multiset Operations ---
     sets.append("\nMultiset Operations\n");
     sets.append("Store A\t\t" + multiSetToElements(setSize, multisetA) + "\nCounts:\t\t" + multiSetsToString(setSize, multisetA) + "\n\n");
     sets.append("Store B\t\t" + multiSetToElements(setSize, multisetB) + "\nCounts:\t\t" + multiSetsToString(setSize, multisetB) + "\n\n");
     sets.append("Store C\t\t" + multiSetToElements(setSize, multisetC) + "\nCounts:\t\t" + multiSetsToString(setSize, multisetC) + "\n\n");
 
+    int* multiResult = nullptr; // Assuming your multiset functions return int* arrays
+
+    // -- Test Case 1: Store A and Store B --
     sets.append("-- Test Case 1: Store A and Store B --\n");
-    sets.append("A u B (max):\t" + multiSetsToString(setSize, Multisets::Union(multisetA, multisetB, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Union(multisetA, multisetB, setSize)) + "\n");
-    sets.append("A n B (min):\t" + multiSetsToString(setSize, Multisets::Intersection(multisetA, multisetB, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Intersection(multisetA, multisetB, setSize)) + "\n");
-    sets.append("A - B:\t\t" + multiSetsToString(setSize, Multisets::Difference(multisetA, multisetB, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Difference(multisetA, multisetB, setSize)) + "\n");
-    sets.append("A + B:\t\t" + multiSetsToString(setSize, Multisets::Sum(multisetA, multisetB, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Sum(multisetA, multisetB, setSize)) + "\n\n");
 
+    multiResult = Multisets::Union(multisetA, multisetB, setSize);
+    sets.append("A u B (max):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Intersection(multisetA, multisetB, setSize);
+    sets.append("A n B (min):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Difference(multisetA, multisetB, setSize);
+    sets.append("A - B:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Sum(multisetA, multisetB, setSize);
+    sets.append("A + B:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n\n");
+    delete[] multiResult;
+
+
+    // -- Test Case 2: Store A and Store C --
     sets.append("-- Test Case 2: Store A and Store C --\n");
-    sets.append("A u C (max):\t" + multiSetsToString(setSize, Multisets::Union(multisetA, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Union(multisetA, multisetC, setSize)) + "\n");
-    sets.append("A n C (min):\t" + multiSetsToString(setSize, Multisets::Intersection(multisetA, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Intersection(multisetA, multisetC, setSize)) + "\n");
-    sets.append("A - C:\t\t" + multiSetsToString(setSize, Multisets::Difference(multisetA, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Difference(multisetA, multisetC, setSize)) + "\n");
-    sets.append("A + C:\t\t" + multiSetsToString(setSize, Multisets::Sum(multisetA, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Sum(multisetA, multisetC, setSize)) + "\n\n");
 
+    multiResult = Multisets::Union(multisetA, multisetC, setSize);
+    sets.append("A u C (max):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Intersection(multisetA, multisetC, setSize);
+    sets.append("A n C (min):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Difference(multisetA, multisetC, setSize);
+    sets.append("A - C:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Sum(multisetA, multisetC, setSize);
+    sets.append("A + C:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n\n");
+    delete[] multiResult;
+
+
+    // -- Test Case 3 (Edge): Store B and Store C --
     sets.append("-- Test Case 3 (Edge): Store B and Store C --\n");
-    sets.append("B u C (max):\t" + multiSetsToString(setSize, Multisets::Union(multisetB, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Union(multisetB, multisetC, setSize)) + "\n");
-    sets.append("B n C (min):\t" + multiSetsToString(setSize, Multisets::Intersection(multisetB, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Intersection(multisetB, multisetC, setSize)) + "\n");
-    sets.append("B - C:\t\t" + multiSetsToString(setSize, Multisets::Difference(multisetB, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Difference(multisetB, multisetC, setSize)) + "\n");
-    sets.append("B + C:\t\t" + multiSetsToString(setSize, Multisets::Sum(multisetB, multisetC, setSize)) + "  ->  " + multiSetToElements(setSize, Multisets::Sum(multisetB, multisetC, setSize)) + "\n");
+
+    multiResult = Multisets::Union(multisetB, multisetC, setSize);
+    sets.append("B u C (max):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Intersection(multisetB, multisetC, setSize);
+    sets.append("B n C (min):\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Difference(multisetB, multisetC, setSize);
+    sets.append("B - C:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
+
+    multiResult = Multisets::Sum(multisetB, multisetC, setSize);
+    sets.append("B + C:\t\t" + multiSetsToString(setSize, multiResult) + "  ->  " + multiSetToElements(setSize, multiResult) + "\n");
+    delete[] multiResult;
 
     sys->print(sets);
     return 0;

@@ -18,7 +18,7 @@ namespace Multisets
         return result;
     }
 
-    //NIN
+    //MIN
     int* Intersection(int* setA, int* setB, int size)
     {
         int* result = new int[size];

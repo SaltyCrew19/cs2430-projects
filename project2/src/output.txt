@@ -1,0 +1,63 @@
+-----------------------------------------------------------------------------------------
+Welcome to the [SetsAndMultisets] project
+-----------------------------------------------------------------------------------------
+[SetsAndMultisets] 
+Set Operations
+Store A         [Apple, Mango, Grape, Kiwi, Lemon]
+Bit String:     [1, 0, 1, 0, 1, 0, 0, 0, 1, 1]
+
+Store B         [Banana, Mango, Orange, Peach, Pear]
+Bit String:     [0, 1, 1, 1, 0, 1, 0, 1, 0, 0]
+
+Store C         [Apple, Banana, Plum, Pear, Lemon]
+Bit String:     [1, 1, 0, 0, 0, 0, 1, 1, 0, 1]
+
+-- Test Case 1: Store A and Store B --
+NOT(A):         [0, 1, 0, 1, 0, 1, 1, 1, 0, 0]  ->  [Banana, Orange, Peach, Plum, Pear]
+A u B:          [1, 1, 1, 1, 1, 1, 0, 1, 1, 1]  ->  [Apple, Banana, Mango, Orange, Grape, Peach, Pear, Kiwi, Lemon]
+A n B:          [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]  ->  [Mango]
+A - B:          [1, 0, 0, 0, 1, 0, 0, 0, 1, 1]  ->  [Apple, Grape, Kiwi, Lemon]
+A (+) B:        [1, 1, 0, 1, 1, 1, 0, 1, 1, 1]  ->  [Apple, Banana, Orange, Grape, Peach, Pear, Kiwi, Lemon]
+
+-- Test Case 2: Store A and Store C --
+NOT(A):         [0, 1, 0, 1, 0, 1, 1, 1, 0, 0]  ->  [Banana, Orange, Peach, Plum, Pear]
+A u C:          [1, 1, 1, 0, 1, 0, 1, 1, 1, 1]  ->  [Apple, Banana, Mango, Grape, Plum, Pear, Kiwi, Lemon]
+A n C:          [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]  ->  [Apple, Lemon]
+A - C:          [0, 0, 1, 0, 1, 0, 0, 0, 1, 0]  ->  [Mango, Grape, Kiwi]
+A (+) C:        [0, 1, 1, 0, 1, 0, 1, 1, 1, 0]  ->  [Banana, Mango, Grape, Plum, Pear, Kiwi]
+
+-- Test Case 3 (Edge): Store B and Store C --
+NOT(B):         [1, 0, 0, 0, 1, 0, 1, 0, 1, 1]  ->  [Apple, Grape, Plum, Kiwi, Lemon]
+B u C:          [1, 1, 1, 1, 0, 1, 1, 1, 0, 1]  ->  [Apple, Banana, Mango, Orange, Peach, Plum, Pear, Lemon]
+B n C:          [0, 1, 0, 0, 0, 0, 0, 1, 0, 0]  ->  [Banana, Pear]
+B - C:          [0, 0, 1, 1, 0, 1, 0, 0, 0, 0]  ->  [Mango, Orange, Peach]
+B (+) C:        [1, 0, 1, 1, 0, 1, 1, 0, 0, 1]  ->  [Apple, Mango, Orange, Peach, Plum, Lemon]
+
+
+Multiset Operations
+Store A         [Applex3, Mangox5, Grapex2, Kiwix4, Lemonx1]
+Counts:         [3, 0, 5, 0, 2, 0, 0, 0, 4, 1]
+
+Store B         [Bananax2, Mangox3, Orangex4, Peachx6, Pearx2]
+Counts:         [0, 2, 3, 4, 0, 6, 0, 2, 0, 0]
+
+Store C         [Applex1, Bananax4, Plumx3, Pearx2, Lemonx5]
+Counts:         [1, 4, 0, 0, 0, 0, 3, 2, 0, 5]
+
+-- Test Case 1: Store A and Store B --
+A u B (max):    [3, 2, 5, 4, 2, 6, 0, 2, 4, 1]  ->  [Applex3, Bananax2, Mangox5, Orangex4, Grapex2, Peachx6, Pearx2, Kiwix4, Lemonx1]
+A n B (min):    [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]  ->  [Mangox3]
+A - B:          [3, 0, 2, 0, 2, 0, 0, 0, 4, 1]  ->  [Applex3, Mangox2, Grapex2, Kiwix4, Lemonx1]
+A + B:          [3, 2, 8, 4, 2, 6, 0, 2, 4, 1]  ->  [Applex3, Bananax2, Mangox8, Orangex4, Grapex2, Peachx6, Pearx2, Kiwix4, Lemonx1]
+
+-- Test Case 2: Store A and Store C --
+A u C (max):    [3, 4, 5, 0, 2, 0, 3, 2, 4, 5]  ->  [Applex3, Bananax4, Mangox5, Grapex2, Plumx3, Pearx2, Kiwix4, Lemonx5]
+A n C (min):    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]  ->  [Applex1, Lemonx1]
+A - C:          [2, 0, 5, 0, 2, 0, 0, 0, 4, 0]  ->  [Applex2, Mangox5, Grapex2, Kiwix4]
+A + C:          [4, 4, 5, 0, 2, 0, 3, 2, 4, 6]  ->  [Applex4, Bananax4, Mangox5, Grapex2, Plumx3, Pearx2, Kiwix4, Lemonx6]
+
+-- Test Case 3 (Edge): Store B and Store C --
+B u C (max):    [1, 4, 3, 4, 0, 6, 3, 2, 0, 5]  ->  [Applex1, Bananax4, Mangox3, Orangex4, Peachx6, Plumx3, Pearx2, Lemonx5]
+B n C (min):    [0, 2, 0, 0, 0, 0, 0, 2, 0, 0]  ->  [Bananax2, Pearx2]
+B - C:          [0, 0, 3, 4, 0, 6, 0, 0, 0, 0]  ->  [Mangox3, Orangex4, Peachx6]
+B + C:          [1, 6, 3, 4, 0, 6, 3, 4, 0, 5]  ->  [Applex1, Bananax6, Mangox3, Orangex4, Peachx6, Plumx3, Pearx4, Lemonx5]

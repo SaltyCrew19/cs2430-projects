@@ -24,8 +24,8 @@ std::vector<Experiment> experiments = {
 };
 int main(int, char**)
 {
-    ConsoleOutput* sys = new ConsoleOutput("KnapsackOptimization");
-    sys->intro();
+    ConsoleOutput sys = ConsoleOutput("KnapsackOptimization");
+    sys.intro();
     
     std::vector<Results> temp = bruteForceSearch(experiments); 
     std::vector<Experiment> temp2; 
@@ -40,7 +40,7 @@ int main(int, char**)
 
     for (int i = 0; i < temp2.size(); i++)
     {
-        sys->print(temp2[i].name);
+        sys.print(temp2[i].name);
     }
     
     

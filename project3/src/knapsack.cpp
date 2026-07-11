@@ -6,6 +6,43 @@
     File:       knapsack.cpp
     Purpose:    Defines knapsack methods
 */
+
+/*
+    FUNCTION solveKnapsackDP(const std::vector<Experiment>& experiments, int maxCapacity)
+        // 1. Initialize the 2D table using std::vector of std::vector
+        // Rows: 0 to numExperiments (size + 1)
+        // Columns: 0 to maxCapacity (maxCapacity + 1)
+        // All memory is pre-allocated and zero-initialized
+        int numExperiments = experiments.size()
+        std::vector<std::vector<int>> dpTable(numExperiments + 1, std::vector<int>(maxCapacity + 1, 0))
+
+        // 2. Outer loop: Iterate through the experiment pool
+        FOR i FROM 1 TO numExperiments:
+            // Use a constant reference to avoid expensive copying of struct data
+            const auto& current = experiments[i-1] 
+
+            // Inner loop: Evaluate every discrete weight capacity capacity
+            FOR w FROM 0 TO maxCapacity:
+                
+                // Option A: Skip the current experiment (Look up one row in the matrix)
+                int skipOption = dpTable[i-1][w]
+
+                // Option B: Take the current experiment (Verify it does not exceed current bounds)
+                int takeOption = 0
+                IF current.weight <= w THEN
+                    // O(1) pointer-offset lookup for remaining capacity from the previous subproblem
+                    takeOption = current.rating + dpTable[i-1][w - current.weight]
+                ENDIF
+
+                // Assign the cell to the maximum value using std::max logic
+                dpTable[i][w] = std::max(skipOption, takeOption)
+            ENDFOR
+        ENDFOR
+
+        // 3. Return the evaluation result stored in the final block of the vector
+        RETURN dpTable[numExperiments][maxCapacity]
+    ENDFUNCTION
+*/
 #include "knapsack.h"
 #include "ConsoleOutput.h"
 #include <vector>

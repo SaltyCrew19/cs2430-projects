@@ -15,6 +15,7 @@
 static void quickSortHelperRating(std::vector<Experiment> &vec, int low, int high);
 static void quickSortHelperWeight(std::vector<Experiment> &vec, int low, int high);
 static void quickSortHelperRatio(std::vector<Experiment> &vec, int low, int high);
+static Results selectKnap(const std::vector<Experiment> &vecArr);
 static void swapElements(std::vector<Experiment> &vec, int a, int b);
 
 static void quickSortHelperResults(std::vector<Results> &vec, int low, int high);
@@ -38,20 +39,38 @@ static std::vector<Experiment> experiments = {
 
 Results selectByRating(std::vector<Experiment> vecArr)
 {
-    Results temp;
-    return temp;
+    quickSort(vecArr,1);
+    return selectKnap(vecArr);
 }
 Results selectByWeight(std::vector<Experiment> vecArr)
 {
 
-    Results temp;
-    return temp;
+    quickSort(vecArr,2);
+    return selectKnap(vecArr);
 }
 Results selectByRatio(std::vector<Experiment> vecArr)
 {
 
-    Results temp;
-    return temp;
+    quickSort(vecArr,3);
+    return selectKnap(vecArr);
+}
+static Results selectKnap(const std::vector<Experiment> &vecArr)
+{
+    Results results;
+    int totalWeight = 0;
+    int totalRating = 0;
+    for (int i = vecArr.size()-1; i >= 0; i--)
+    {
+        if((totalWeight + vecArr[i].weight) <= WEIGHT_LIMIT)
+        {
+            totalRating += vecArr[i].rating;
+            totalWeight += vecArr[i].weight;
+            results.totalRating = totalRating;
+            results.totalWeight = totalWeight;
+            results.experiments.push_back(vecArr[i]);
+        }
+    }
+    return results;
 }
 std::vector<Results> bruteForceSearch (const std::vector<Experiment> &vecArr)
 {
@@ -135,7 +154,7 @@ static void quickSortHelperWeight(std::vector<Experiment> &vec, int low, int hig
     int i = low -1;
     for(int j = low; j < high; j++)
     {
-        if (vec[j].weight <= pivot.weight)
+        if (vec[j].weight >= pivot.weight)
         {i++; swapElements(vec, i , j);}
     }
     swapElements(vec, i+1, high);

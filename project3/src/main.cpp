@@ -22,28 +22,32 @@ std::vector<Experiment> experiments = {
     {11, "Cosmic Rays", 80, 7},
     {12, "Yeast Fermentation", 27, 4}
 };
+
+void verify();
+
 int main(int, char**)
 {
     ConsoleOutput sys = ConsoleOutput("KnapsackOptimization");
     sys.intro();
-    
-    std::vector<Results> temp = bruteForceSearch(experiments); 
-    std::vector<Experiment> temp2; 
-    for (int i = 0; i < temp.size(); i++)
-    {
-        for (int j = 0; j < temp[i].experiments.size(); j++)
-        {
-            temp2.push_back(temp[i].experiments[j]);
-        }
-        temp2.push_back({34,"end of set---------------------------------------------------------",0,0});
-    }
 
-    for (int i = 0; i < temp2.size(); i++)
-    {
-        sys.print(temp2[i].name);
-    }
-    
-    
+    verify();
+}
+
+void verify()
+{
+    ConsoleOutput sys = ConsoleOutput("Verification");
+    Results rating = selectByRating(experiments);
+    Results weight = selectByWeight(experiments);
+    Results ratio  = selectByRatio(experiments);
+    Results brute  = bruteForceSearch(experiments)[0];
+
+    bool rating_matched = (rating.totalRating == brute.totalRating);
+    bool weight_matched = (weight.totalRating == brute.totalRating);
+    bool ratio_matched  = (ratio.totalRating  == brute.totalRating);
+
+    sys.print("Rating-first matched optimal: " + std::string(rating.totalRating == brute.totalRating ? "true" : "false") + " (Greedy: " + std::to_string(rating.totalRating) + " vs Brute: " + std::to_string(brute.totalRating) + ")");
+    sys.print("Weight-first matched optimal: " + std::string(weight.totalRating == brute.totalRating ? "true" : "false") + " (Greedy: " + std::to_string(weight.totalRating) + " vs Brute: " + std::to_string(brute.totalRating) + ")");
+    sys.print("Ratio-first matched optimal:  " + std::string(ratio.totalRating == brute.totalRating  ? "true" : "false") + " (Greedy: " + std::to_string(ratio.totalRating)  + " vs Brute: " + std::to_string(brute.totalRating) + ")");
 }
 
 

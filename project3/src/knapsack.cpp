@@ -8,6 +8,8 @@
 */
 
 /*
+    This method demonstrates efficiency: in theory, it reaches the true optimal solution without doing the full exponential work brute force requires.
+
     FUNCTION solveKnapsackDP(const std::vector<Experiment>& experiments, int maxCapacity)
         // 1. Initialize the 2D table using std::vector of std::vector
         // Rows: 0 to numExperiments (size + 1)

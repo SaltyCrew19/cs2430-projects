@@ -11,8 +11,8 @@ class ConsoleOutput
         ConsoleOutput(/* args */);
         ConsoleOutput(std::string name);
         void intro();
-        void print(std::stringstream);
-        void print(std::string);
+        void print(std::stringstream &msg);
+        void print(const std::string &msg);
         ~ConsoleOutput();
 };
 

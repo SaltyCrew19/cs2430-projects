@@ -60,6 +60,7 @@ static void swapElements(std::vector<Experiment> &vec, int a, int b);
 static void quickSortHelperResults(std::vector<Results> &vec, int low, int high);
 static void swapElements(std::vector<Results> &vec, int a, int b);
 
+ConsoleOutput sys = ConsoleOutput("knapsack.cpp");
 const int WEIGHT_LIMIT = 700;
 static std::vector<Experiment> experiments = {
     {1, "Cloud Patterns", 36, 5},
@@ -78,18 +79,19 @@ static std::vector<Experiment> experiments = {
 
 Results selectByRating(std::vector<Experiment> vecArr)
 {
+    sys.print("Running selectByRating");
     quickSort(vecArr,1);
     return selectKnap(vecArr);
 }
 Results selectByWeight(std::vector<Experiment> vecArr)
 {
-
+    sys.print("Running selectByWeight");
     quickSort(vecArr,2);
     return selectKnap(vecArr);
 }
 Results selectByRatio(std::vector<Experiment> vecArr)
 {
-
+    sys.print("Running selectByRatio");
     quickSort(vecArr,3);
     return selectKnap(vecArr);
 }
@@ -113,6 +115,7 @@ static Results selectKnap(const std::vector<Experiment> &vecArr)
 }
 std::vector<Results> bruteForceSearch (const std::vector<Experiment> &vecArr)
 {
+    sys.print("Running bruteForceSearch");
     std::vector<Results> results = {};
     int totalWeight;
     int totalRating;
@@ -142,7 +145,6 @@ std::vector<Results> bruteForceSearch (const std::vector<Experiment> &vecArr)
     quickSort(results);
     if (results.size() > 3){for (int i = results.size()-1; i > results.size()-4; i--){finalResults.push_back(results[i]);}}
     else{return results;}
-    
     return finalResults;
 }
 /**
@@ -155,18 +157,21 @@ void quickSort(std::vector<Experiment> &vec, int choice)
     switch (choice)
     {
     case 1:
+        sys.print("Running quickSortHelperRating");
         quickSortHelperRating(vec, 0, vec.size()-1);
         break;
     case 2:
+        sys.print("Running quickSortHelperWeight");
         quickSortHelperWeight(vec, 0, vec.size()-1);
         break;
     case 3:
+        sys.print("Running quickSortHelperRatio");
         quickSortHelperRatio(vec, 0, vec.size()-1);
         break;
     
     default:
-        ConsoleOutput sys = ConsoleOutput("knapsack.cpp");
-        sys.print("something went wrong the selector (" + std::to_string(choice) + ") was used in quickSort selection");
+        ConsoleOutput quickSort = ConsoleOutput("Quicksort");
+        quickSort.print("something went wrong the selector (" + std::to_string(choice) + ") was used in quickSort selection");
         break;
     }
 }
@@ -226,6 +231,7 @@ static void swapElements(std::vector<Experiment> &vec, int a, int b)
 
 void quickSort(std::vector<Results> &vec)
 {
+    sys.print("Running quickSort for Results Type");
     quickSortHelperResults(vec, 0, vec.size()-1);
 }
 
@@ -249,4 +255,20 @@ static void swapElements(std::vector<Results> &vec, int a, int b)
     Results temp = vec[a];
     vec[a] = vec[b];
     vec[b] = temp;
+}
+
+void test()
+{
+    ConsoleOutput test = ConsoleOutput("test");
+    std::vector<Experiment> weight = experiments;
+    std::vector<Experiment> ratio = experiments;
+
+    quickSort(weight , 2);
+    quickSort(ratio , 3);
+
+    for (int i = ratio.size()-1; i >= 0; i--)
+    {
+        test.print("weight: "+ weight[i].name + std::to_string(weight[i].weight) + "\t\t\t\tratio: " + ratio[i].name + std::to_string(ratio[i].weight));
+    }
+    
 }

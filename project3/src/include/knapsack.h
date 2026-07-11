@@ -26,3 +26,4 @@ std::vector<Results> bruteForceSearch (const std::vector<Experiment> &vecArr);
 void quickSort(std::vector<Experiment> &vec, int choice);
 void quickSort(std::vector<Results> &vec);
 
+void test();

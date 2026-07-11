@@ -8,7 +8,7 @@
 */
 
 /*
-    This method demonstrates efficiency: in theory, it reaches the true optimal solution without doing the full exponential work brute force requires.
+    This method demonstrates efficiency: it reaches the true optimal solution without needing to do the full exponential work brute force requires.
 
     FUNCTION solveKnapsackDP(const std::vector<Experiment>& experiments, int maxCapacity)
         // 1. Initialize the 2D table using std::vector of std::vector

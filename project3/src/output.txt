@@ -14,5 +14,3 @@ Ship 3:                         Rating: 51      weight: 687      ratio: 0.074235
 Rating-first matched optimal: false (Greedy: 35 vs Brute: 53)
 Weight-first matched optimal: false (Greedy: 52 vs Brute: 53)
 Ratio-first matched optimal:  false (Greedy: 52 vs Brute: 53)
-
-PS C:\Users\Connor\Documents\Code\CS-2430\cs2430-projects\project3> 

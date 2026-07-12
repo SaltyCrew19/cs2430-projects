@@ -79,19 +79,19 @@ static std::vector<Experiment> experiments = {
 
 Results selectByRating(std::vector<Experiment> vecArr)
 {
-    sys.print("Running selectByRating");
+    // sys.print("Running selectByRating");
     quickSort(vecArr,1);
     return selectKnap(vecArr);
 }
 Results selectByWeight(std::vector<Experiment> vecArr)
 {
-    sys.print("Running selectByWeight");
+    // sys.print("Running selectByWeight");
     quickSort(vecArr,2);
     return selectKnap(vecArr);
 }
 Results selectByRatio(std::vector<Experiment> vecArr)
 {
-    sys.print("Running selectByRatio");
+    // sys.print("Running selectByRatio");
     quickSort(vecArr,3);
     return selectKnap(vecArr);
 }
@@ -115,7 +115,7 @@ static Results selectKnap(const std::vector<Experiment> &vecArr)
 }
 std::vector<Results> bruteForceSearch (const std::vector<Experiment> &vecArr)
 {
-    sys.print("Running bruteForceSearch");
+    // sys.print("Running bruteForceSearch");
     std::vector<Results> results = {};
     int totalWeight;
     int totalRating;
@@ -157,15 +157,15 @@ void quickSort(std::vector<Experiment> &vec, int choice)
     switch (choice)
     {
     case 1:
-        sys.print("Running quickSortHelperRating");
+        // sys.print("Running quickSortHelperRating");
         quickSortHelperRating(vec, 0, vec.size()-1);
         break;
     case 2:
-        sys.print("Running quickSortHelperWeight");
+        // sys.print("Running quickSortHelperWeight");
         quickSortHelperWeight(vec, 0, vec.size()-1);
         break;
     case 3:
-        sys.print("Running quickSortHelperRatio");
+        // sys.print("Running quickSortHelperRatio");
         quickSortHelperRatio(vec, 0, vec.size()-1);
         break;
     
@@ -231,7 +231,7 @@ static void swapElements(std::vector<Experiment> &vec, int a, int b)
 
 void quickSort(std::vector<Results> &vec)
 {
-    sys.print("Running quickSort for Results Type");
+    // sys.print("Running quickSort for Results Type");
     quickSortHelperResults(vec, 0, vec.size()-1);
 }
 

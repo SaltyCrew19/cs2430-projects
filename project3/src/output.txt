@@ -1,0 +1,18 @@
+[KnapsackOptimization] Building output Stream
+[Verification] Verification Started
+[KnapsackOptimization] 
+(Greedy Methods)
+select By Rating:               Rating: 35      weight: 700      ratio: 0.05
+select By weight:               Rating: 52      weight: 654      ratio: 0.0795107
+select By ratio:                Rating: 52      weight: 654      ratio: 0.0795107
+
+(Brute Method Top 3)
+Ship 1 (OPTIMAL):               Rating: 53      weight: 692      ratio: 0.0765896
+Ship 2:                         Rating: 52      weight: 654      ratio: 0.0795107
+Ship 3:                         Rating: 51      weight: 687      ratio: 0.0742358
+
+Rating-first matched optimal: false (Greedy: 35 vs Brute: 53)
+Weight-first matched optimal: false (Greedy: 52 vs Brute: 53)
+Ratio-first matched optimal:  false (Greedy: 52 vs Brute: 53)
+
+PS C:\Users\Connor\Documents\Code\CS-2430\cs2430-projects\project3> 

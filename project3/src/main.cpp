@@ -46,7 +46,7 @@ int main(int, char**)
     output << "Ship 2:\t\t\t\t" << "Rating: " << brute[1].totalRating << "\tweight: " << brute[1].totalWeight << "\t ratio: " << ((double)brute[1].totalRating / brute[1].totalWeight) << "\n";
     output << "Ship 3:\t\t\t\t" << "Rating: " << brute[2].totalRating << "\tweight: " << brute[2].totalWeight << "\t ratio: " << ((double)brute[2].totalRating / brute[2].totalWeight) << "\n";
     
-    output << "\n\n" << verify();
+    output << "\n" << verify();
     sys.print(output);
 }
 

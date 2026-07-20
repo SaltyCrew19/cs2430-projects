@@ -12,3 +12,4 @@ add_executable(MonopolySimulation
 )
 
 target_include_directories(MonopolySimulation PRIVATE src/header)
+target_include_directories(MonopolySimulation PRIVATE src/header/square)

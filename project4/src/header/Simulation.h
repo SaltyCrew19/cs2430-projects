@@ -18,10 +18,18 @@ private:
     int currentPlayerInt;
     std::vector<Player> players;
 
+
+    //methods
+    void nextTurn();
+    void movePlayer(Player player, int pos);
+    int roll();
 public:
     Simulation();
     void run();
-    void nextTurn();
+
+    std::vector<Card> buildCommunityChest();
+    std::vector<Card> buildChance();
+    std::vector<Player> buildPlayers();
 
     ~Simulation();
 };

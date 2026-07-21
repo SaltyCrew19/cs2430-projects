@@ -20,11 +20,12 @@ enum class CardEffect
     CollectFromEachPlayer,  // collect a fixed amount from every other player (value = amount per player)
     PayPerBuilding          // pay per house/hotel owned (needs 2 values: per-house and per-hotel rate, more below)
 };
-
+enum class CardCategory{communityChest,chance};
 struct Card
 {
-    std::string text;   // the card's printed text, shown to the player when drawn
-    CardEffect effect;  // which behavior this card triggers, handled in Simulation/Player logic
-    int value;          // primary value: dollar amount, board position, or per-house repair rate
-    int secondValue;    // only used by PayPerBuilding, the per-hotel rate; unused (0) otherwise
+    std::string text;       // the card's printed text, shown to the player when drawn
+    CardCategory category;  // weather the card is in the chance or community deck
+    CardEffect effect;      // which behavior this card triggers, handled in Simulation/Player logic
+    int value;              // primary value: dollar amount, board position, or per-house repair rate
+    int secondValue;        // only used by PayPerBuilding, the per-hotel rate; unused (0) otherwise
 };

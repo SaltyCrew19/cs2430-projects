@@ -24,5 +24,5 @@ Card Deck::draw()
     return draw;
 }
 
-void Deck::returnCard(const Card& card) { cards.push_back(card); }
+void Deck::returnCard(Card card) { cards.push_back(std::move(card));}
 

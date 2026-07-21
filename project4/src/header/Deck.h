@@ -15,6 +15,6 @@ public:
 
     void shuffle();
     Card draw();
-    void returnCard(const Card& card);
+    void returnCard(Card card);
     void reset();
 };

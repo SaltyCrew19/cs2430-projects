@@ -27,6 +27,8 @@ public:
     Simulation();
     void run();
 
+    void doInJailActions(Player& currentPlayer, const int& die1, const int& die2);
+
     std::vector<Card> buildCommunityChest();
     std::vector<Card> buildChance();
     std::vector<Player> buildPlayers();

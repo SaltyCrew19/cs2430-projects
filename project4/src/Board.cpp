@@ -5,11 +5,12 @@ Board::Board()
 {
     sys = Console("Board");
     initBoard();
-    printBoard();
+    // printBoard();
 }
 
 void Board::initBoard()
 {
+    sys.print("Building Board");
     board.clear();
 
     // --- BOTTOM ROW (0 to 10) ---

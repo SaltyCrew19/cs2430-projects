@@ -4,35 +4,27 @@
 #include <vector>
 #include <string>
 #include "Card.h"
-enum class Playstyle
-{
-    Neutral,
-    Aggressive,
-    Carefull
-};
+enum class Playstyle    {Neutral,Aggressive,Carefull};
+enum class JailDecision { PayFine, TryRoll, UseCard };
 class Player
 {
 private:
+    
+public:
+    std::vector<Card> cards;
     std::string name;
     Playstyle style;
     int pos = 0;
     int money = 1500;
     bool inJail = false;
-    std::vector<Card> cards;
-public:
-
     bool isDone = false;
     int place = 0;
+    int doublesCount = 0;
+    
+    JailDecision decideJailAction() const;
+
     Player();
     Player(std::string name);
     Player(std::string name, Playstyle style);
 
-    //getters and setters
-    void setPos(int pos);
-    int getPos() const;
-    void setMoney(int money);
-    int getMoney() const;
-    void setInJail(bool inJail);
-    bool getInJail() const;
-    
 };

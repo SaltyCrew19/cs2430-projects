@@ -6,12 +6,14 @@ Player::Player(std::string name):name(std::move(name)),style(Playstyle::Neutral)
 Player::Player(std::string name, Playstyle style):name(std::move(name)),style(style) {}
 
 
+//TODO:
+JailDecision Player::decideJailAction() const
+{
+    // if (hasJailFreeCard) return JailDecision::UseCard;
+    // could branch on `style` here later:
+    // Aggressive -> always try rolling (save the $50)
+    // Careful -> always pay the $50 (guaranteed out, avoid risk)
+    // Neutral -> maybe pay if money is low, roll otherwise
 
-
-//getters and setters
-    void Player::setPos(int pos){this->pos = pos;}
-    int Player::getPos() const {return this->pos;}
-    void Player::setMoney(int money){this->money = money;}
-    int Player::getMoney() const {return this->money;}
-    void Player::setInJail(bool inJail){this->inJail = inJail;}
-    bool Player::getInJail() const {return this->inJail;}
+    return JailDecision::PayFine; // placeholder until you build real logic
+}
